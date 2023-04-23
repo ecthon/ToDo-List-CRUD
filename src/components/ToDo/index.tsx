@@ -3,7 +3,7 @@ import styled from './styles.module.scss';
 import { v4 as uuidv4 } from 'uuid';
 import { CheckCircle, Circle, PlusCircle, Trash } from 'phosphor-react';
 import { NoTasks } from '../NoTasks';
-import { ChangeEvent, MouseEvent, useState } from 'react';
+import { useState } from 'react';
 
 export interface TaskProps {
     id: string;
@@ -37,10 +37,9 @@ export function ToDo() {
     }
 
     function hendleToggleTaskComplete(id: string) {
-        const toggleTaskComplete = tasks.map(task => task.id === id ? {
-            ...task,
-            isComplete: !task.isComplete
-        } : task)
+        const toggleTaskComplete = tasks.map(task => task.id === id 
+            ? {...task,isComplete: !task.isComplete}
+            : task)
 
         setTasks(toggleTaskComplete);
     }
