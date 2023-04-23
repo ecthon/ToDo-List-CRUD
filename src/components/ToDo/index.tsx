@@ -8,45 +8,58 @@ import { useState } from 'react';
 export interface TaskProps {
     id: string;
     title: string;
-    isComplete: boolean;
+    isCompleted: boolean;
 }
 
 export function ToDo() {
     const [tasks, setTasks] = useState<TaskProps[]>([
         {
             id: uuidv4(),
-            title: 'Refactor',
-            isComplete: false
+            title: 'Estudar React',
+            isCompleted: false
         }
     ])
-    const [newTaskTitle, setNewTaskTitle] = useState('');
+    const [CompletedTasks, setCompleteddTasks] = useState<number>(0)
+         const [newTaskTitle, setNewTaskTitle] = useState('');
 
-    function hendleCreateNewTask() {
+    function handleCreateNewTask() {
         if (!newTaskTitle) {
             return alert("O campo não pode estar vazio.")
         }
 
-        const task = {
+        const task: TaskProps = {
             id: uuidv4(),
             title: newTaskTitle,
-            isComplete: false
+            isCompleted: false
         }
-
+        
         setTasks([...tasks, task]);
         setNewTaskTitle("");
     }
 
-    function hendleToggleTaskComplete(id: string) {
-        const toggleTaskComplete = tasks.map(task => task.id === id 
-            ? {...task,isComplete: !task.isComplete}
-            : task)
+    function handleToggleTaskCompleted(index: number) {
+        const toggleTaskCompleted = tasks[index];
+        toggleTaskCompleted.isCompleted = !toggleTaskCompleted.isCompleted;
+        // const toggleTaskCompleted = {...tasks[index],isCompleted:!tasks[index].isCompleted}
 
-        setTasks(toggleTaskComplete);
+        // tasks.splice(index,1,toggleTaskCompleted)
+        // let arrayAtualizado:TaskProps[]=[]
+        // Object.assign(arrayAtualizado,tasks)
+        // setTasks(arrayAtualizado);
+        setTasks([...tasks]);
+        updateTakskCompleted();
     }
 
-    function hendleDeleteTask(id: string) {
-        const deleteTask = tasks.filter(task => task.id !== id);
-        setTasks(deleteTask);
+    function updateTakskCompleted(){
+        console.log('tasks ', tasks)
+        const taskCompleted = tasks.filter(el=>el.isCompleted).length
+        setCompleteddTasks(taskCompleted)
+    }
+
+    function handleDeleteTask(index: number) {
+        tasks.splice(index,1);
+        setTasks([...tasks]);
+        updateTakskCompleted();
     }
 
     return (
@@ -64,11 +77,10 @@ export function ToDo() {
                     <button
                         type='submit'
                         className={styled.btnAdd}
-                        onClick={hendleCreateNewTask}
+                        onClick={handleCreateNewTask}
                     > Criar <PlusCircle size={16} />
                     </button>
                 </div>
-
             </div>
 
             {/* INFORMAÇÕES: Tasks criadas/concluídas */}
@@ -80,7 +92,7 @@ export function ToDo() {
 
                 <div className={styled.infoTasks}>
                     <span className={styled.secondSpan}>Concluídas</span>
-                    <p className={styled.count}>0 de {tasks.length}</p>
+                    <p className={styled.count}>{CompletedTasks} de {tasks.length}</p>
                 </div>
             </div>
 
@@ -88,21 +100,20 @@ export function ToDo() {
                 {tasks.length === 0
                     ? <NoTasks />
                     : <ul>
-
-                        {tasks.map(task => (
+                        {tasks.map((task,index:number) => (
                             <li key={task.id}>
                                 <div className={styled.card}>
-                                    <button onClick={() => hendleToggleTaskComplete(task.id)} >
-                                        {task.isComplete === false ? <Circle color='#4EA8DE' size={24} /> : <CheckCircle color='#9747FF' size={24} weight="fill" />}
+                                    <button onClick={() => handleToggleTaskCompleted(index)} >
+                                        {task.isCompleted === false ? <Circle color='#4EA8DE' size={24} /> : <CheckCircle color='#9747FF' size={24} weight="fill" />}
                                     </button>
 
-                                    <p className={task.isComplete === false ? styled.title : styled.complete}>
+                                    <p className={task.isCompleted === false ? styled.title : styled.Completed}>
                                         {task.title}
                                     </p>
 
                                     <button
                                         className={styled.btnDelete}
-                                        onClick={() => hendleDeleteTask(task.id)}
+                                        onClick={() => handleDeleteTask(index)}
                                     >
                                         <Trash size={24} />
                                     </button>
