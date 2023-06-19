@@ -98,7 +98,7 @@ ul {
 .card {
     display: flex;
     flex-direction: row;
-    align-items: flex-start;
+    align-items: center;
     width: 100%;
     padding: 1rem;
     border-radius: 8px;
@@ -110,16 +110,16 @@ ul {
 
 .card .title {
     width: 632px;
-    height: 40px;
+    height: auto;
     text-align: start;
     font-weight: 400;
     font-size: 0.875rem;
     line-height: 140%;
 }
 
-.complete {
+.completed {
     width: 632px;
-    height: 40px;
+    height: auto;
     text-align: start;
     font-weight: 400;
     font-size: 0.875rem;
@@ -136,59 +136,39 @@ ul {
     background: transparent;
 }
 
-.card .btnDelete {
-    color: #808080;
-}
-
-.card .btnDelete:hover {
-    color: var(--danger);
-}
-
-.card {
+.actions {
     display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    width: 100%;
-    padding: 1rem;
-    border-radius: 8px;
-    border: 1px solid var(--gray-400);
-    background: var(--gray-500);
-    margin-bottom: 12px;
-    gap: 12px;
+    align-items: center;
+    gap: 4px;
 }
 
-.card .title {
-    width: 632px;
-    height: 40px;
-    text-align: start;
-    font-weight: 400;
-    font-size: 0.875rem;
-    line-height: 140%;
+.card .actions .btnEdit {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    color: #808080;
+    padding: 6px;
+    border-radius: 6px;
+    background: transparent;
 }
-
-.complete {
-    width: 632px;
-    height: 40px;
-    text-align: start;
-    font-weight: 400;
-    font-size: 0.875rem;
-    line-height: 140%;
-    text-decoration: line-through;
-}
-
-.card button {
-    width: 24px;
-    height: 24px;
-    border: 0;
-    cursor: pointer;
-    border-radius: 2px;
+.card .actions .btnDelete {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    color: #808080;
+    padding: 6px;
+    border-radius: 6px;
     background: transparent;
 }
 
-.card .btnDelete {
-    color: #808080;
+.card .actions .btnDelete:hover {
+    color: var(--danger);
+    background: var(--gray-400);
 }
 
-.card .btnDelete:hover {
-    color: var(--danger);
+.card .actions .btnEdit:hover {
+    color: var(--green);
+    background: var(--gray-400);
 }

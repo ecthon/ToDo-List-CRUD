@@ -1,7 +1,7 @@
 import styled from './styles.module.scss';
 
 import { v4 as uuidv4 } from 'uuid';
-import { CheckCircle, Circle, PlusCircle, Trash } from 'phosphor-react';
+import { CheckCircle, Circle, PencilSimpleLine, PlusCircle, Trash } from 'phosphor-react';
 import { NoTasks } from '../NoTasks';
 import { useState } from 'react';
 import { TaskProps } from '../../types';
@@ -99,19 +99,33 @@ export function ToDo() {
                             <li key={task.id}>
                                 <div className={styled.card}>
                                     <button onClick={() => handleToggleTaskCompleted(index)} >
-                                        {task.isCompleted === false ? <Circle color='#4EA8DE' size={24} /> : <CheckCircle color='#9747FF' size={24} weight="fill" />}
+                                        {task.isCompleted === false
+                                            ? <Circle color='#4EA8DE' size={24} /> 
+                                            : <CheckCircle color='#9747FF' size={24} weight="fill" />
+                                        }
                                     </button>
 
-                                    <p className={task.isCompleted === false ? styled.title : styled.Completed}>
+                                    <p className={task.isCompleted === false
+                                            ? styled.title 
+                                            : styled.completed}
+                                        >
                                         {task.title}
                                     </p>
 
-                                    <button
-                                        className={styled.btnDelete}
-                                        onClick={() => handleDeleteTask(index)}
-                                    >
-                                        <Trash size={24} />
-                                    </button>
+                                    <div className={styled.actions}>
+                                        <button
+                                            className={styled.btnEdit}
+                                            onClick={() => handleDeleteTask(index)}
+                                        >
+                                            <PencilSimpleLine size={64} />
+                                        </button>
+                                        <button
+                                            className={styled.btnDelete}
+                                            onClick={() => handleDeleteTask(index)}
+                                        >
+                                            <Trash size={64} />
+                                        </button>
+                                    </div>
                                 </div>
                             </li>
                         ))}
