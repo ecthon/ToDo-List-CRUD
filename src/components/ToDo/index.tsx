@@ -4,12 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { CheckCircle, Circle, PlusCircle, Trash } from 'phosphor-react';
 import { NoTasks } from '../NoTasks';
 import { useState } from 'react';
-
-export interface TaskProps {
-    id: string;
-    title: string;
-    isCompleted: boolean;
-}
+import { TaskProps } from '../../types';
 
 export function ToDo() {
     const [tasks, setTasks] = useState<TaskProps[]>([
