@@ -1,5 +1,5 @@
 .container {
-    width: 736px;
+    max-width: 736px;
     display: flex;
     flex-direction: column;
     margin: 0 auto;
@@ -9,6 +9,7 @@
     display: flex;
     width: 736px;
     margin: 0 auto;
+    box-sizing: border-box;
 }
 
 .newTaskBar {
@@ -87,7 +88,6 @@ p {
 .showTasks {
     width: 100%;
     height: auto;
-    /* background: red; */
 }
 
 ul {
@@ -97,9 +97,10 @@ ul {
 
 .card {
     display: flex;
-    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
-    width: 100%;
+    width: auto;
+    height: auto;
     padding: 1rem;
     border-radius: 8px;
     border: 1px solid var(--gray-400);
@@ -108,9 +109,9 @@ ul {
     gap: 12px;
 }
 
-.card .title {
-    width: 632px;
-    height: auto;
+.title {
+    word-wrap: break-word;
+    width: 590px;
     text-align: start;
     font-weight: 400;
     font-size: 0.875rem;
@@ -118,8 +119,8 @@ ul {
 }
 
 .completed {
-    width: 632px;
-    height: auto;
+    word-wrap: break-word;
+    width: 590px;
     text-align: start;
     font-weight: 400;
     font-size: 0.875rem;
