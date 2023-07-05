@@ -34,10 +34,10 @@ export function ToDo() {
         setNewTaskTitle("");
     }
 
-    function getUpdateTaskTitle(index: number) {
+    const getTaskData = (index: number) => {
         setState(!state);
         setNewTaskTitle(tasks[index].title);
-        setTaskIndex(index);    
+        setTaskIndex(index);
     }
 
     function handleUpdateTaskTitle() {
@@ -135,7 +135,7 @@ export function ToDo() {
                                     <div className={styled.actions}>
                                         <button
                                             className={styled.btnEdit}
-                                            onClick={() => getUpdateTaskTitle(index)}
+                                            onClick={() => getTaskData(index)}
                                         >
                                             <PencilSimpleLine size={64} />
                                         </button>
