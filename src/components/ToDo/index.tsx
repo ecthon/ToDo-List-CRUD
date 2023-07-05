@@ -62,7 +62,7 @@ export function ToDo() {
         setCountCompletedTasks(taskCompleted)
     }
 
-    function handleDeleteTask(index: number) {
+    const handleDeleteTask = (index: number) => {
         tasks.splice(index,1);
         setTasks([...tasks]);
         updateCountTakskCompleted();
