@@ -7,19 +7,19 @@ import { useState } from 'react';
 import { TaskProps } from '../../types';
 
 export function ToDo() {
-    const [ indexTask, setIndexTask ] = useState(0) 
     const [tasks, setTasks] = useState<TaskProps[]>([
         {
             id: uuidv4(),
-            title: 'Estudar React',
+            title: 'Exemplo',
             isCompleted: false
         }
     ])
-    const [CompletedTasks, setCompleteddTasks] = useState<number>(0)
-    const [newTaskTitle, setNewTaskTitle] = useState('');
-    const [ buttonLabel, setButtonLabel ] = useState(false);
+    const [ taskIndex, setTaskIndex ] = useState(0) 
+    const [ state, setState ] = useState(false);
+    const [ countCompletedTasks, setCountCompletedTasks ] = useState<number>(0)
+    const [ newTaskTitle, setNewTaskTitle ] = useState('');
 
-    function handleCreateNewTask() {
+    const createNewTask = () => {
         if (!newTaskTitle) {
             return alert("O campo não pode estar vazio.")
         }
@@ -35,9 +35,9 @@ export function ToDo() {
     }
 
     function getUpdateTaskTitle(index: number) {
-        setButtonLabel(!buttonLabel);
+        setState(!state);
         setNewTaskTitle(tasks[index].title);
-        setIndexTask(index);    
+        setTaskIndex(index);    
     }
 
     function handleUpdateTaskTitle() {
@@ -45,8 +45,8 @@ export function ToDo() {
             return alert("O campo não pode estar vazio.")
         }
 
-        tasks[indexTask].title = newTaskTitle
-        setButtonLabel(!buttonLabel);
+        tasks[taskIndex].title = newTaskTitle
+        setState(!state);
         setNewTaskTitle("");
     }
 
@@ -66,16 +66,8 @@ export function ToDo() {
     function updateTakskCompleted(){
         console.log('tasks ', tasks)
         const taskCompleted = tasks.filter(el=>el.isCompleted).length
-        setCompleteddTasks(taskCompleted)
+        setCountCompletedTasks(taskCompleted)
     }
-
-    // function updateTaskTitle(index: number) {
-    //     const task = tasks[index].title;
-    //     setButtonLabel(!buttonLabel);
-    //     setNewTaskTitle(task);
-
-    //     tasks[index].title = newTaskTitle 
-    // }
 
     function handleDeleteTask(index: number) {
         tasks.splice(index,1);
@@ -97,11 +89,11 @@ export function ToDo() {
                     />
                     <button
                         type='submit'
-                        className={buttonLabel === false ? styled.btnAdd : styled.btnSave}
-                        onClick={buttonLabel === false ? handleCreateNewTask : handleUpdateTaskTitle}
+                        className={state === false ? styled.btnAdd : styled.btnSave}
+                        onClick={state === false ? createNewTask : handleUpdateTaskTitle}
                     >
-                        {buttonLabel === false ? 'Criar' : 'Alterar'}
-                        {buttonLabel === false ? <PlusCircle size={16} /> : <PencilSimpleLine size={16} />}
+                        {state === false ? 'Criar' : 'Alterar'}
+                        {state === false ? <PlusCircle size={16} /> : <PencilSimpleLine size={16} />}
                     </button>
                 </div>
             </div>
@@ -115,7 +107,7 @@ export function ToDo() {
 
                 <div className={styled.infoTasks}>
                     <span className={styled.secondSpan}>Concluídas</span>
-                    <p className={styled.count}>{CompletedTasks} de {tasks.length}</p>
+                    <p className={styled.count}>{countCompletedTasks} de {tasks.length}</p>
                 </div>
             </div>
 
