@@ -7,6 +7,7 @@ import { useState } from 'react';
 import { TaskProps } from '../../types';
 
 export function ToDo() {
+    const [ indexTask, setIndexTask ] = useState(0) 
     const [tasks, setTasks] = useState<TaskProps[]>([
         {
             id: uuidv4(),
@@ -33,21 +34,19 @@ export function ToDo() {
         setNewTaskTitle("");
     }
 
-    function updateTaskTitle(index: number) {
+    function getUpdateTaskTitle(index: number) {
+        setButtonLabel(!buttonLabel);
+        setNewTaskTitle(tasks[index].title);
+        setIndexTask(index);    
+    }
+
+    function handleUpdateTaskTitle() {
         if (!newTaskTitle) {
             return alert("O campo não pode estar vazio.")
         }
 
-        
-        const task: TaskProps = {
-            id: uuidv4(),
-            title: newTaskTitle,
-            isCompleted: false
-        }
-
-        tasks[index].title = newTaskTitle
-        
-        setTasks([...tasks, task]);
+        tasks[indexTask].title = newTaskTitle
+        setButtonLabel(!buttonLabel);
         setNewTaskTitle("");
     }
 
@@ -99,7 +98,7 @@ export function ToDo() {
                     <button
                         type='submit'
                         className={buttonLabel === false ? styled.btnAdd : styled.btnSave}
-                        onClick={handleCreateNewTask}
+                        onClick={buttonLabel === false ? handleCreateNewTask : handleUpdateTaskTitle}
                     >
                         {buttonLabel === false ? 'Criar' : 'Alterar'}
                         {buttonLabel === false ? <PlusCircle size={16} /> : <PencilSimpleLine size={16} />}
@@ -144,7 +143,7 @@ export function ToDo() {
                                     <div className={styled.actions}>
                                         <button
                                             className={styled.btnEdit}
-                                            onClick={() => updateTaskTitle(index)}
+                                            onClick={() => getUpdateTaskTitle(index)}
                                         >
                                             <PencilSimpleLine size={64} />
                                         </button>
