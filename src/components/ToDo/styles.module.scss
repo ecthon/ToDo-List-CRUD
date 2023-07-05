@@ -12,12 +12,12 @@
     box-sizing: border-box;
 }
 
-.newTaskBar {
+.new_task_bar {
     display: flex;
     margin-top: -2rem;
 }
 
-.newTaskBar input {
+.new_task_bar input {
     width: 638px;
     height: 56px;
     background: var(--gray-500);
@@ -28,7 +28,7 @@
     align-items: center;
 }
 
-.newTaskBar .btnAdd {
+.new_task_bar .btn_add {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -45,11 +45,11 @@
     border: 0;
 }
 
-.newTaskBar .btnAdd:hover {
+.new_task_bar .btn_add:hover {
     background: var(--blue);
 }
 
-.newTaskBar .btnSave {
+.new_task_bar .btn_save {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -65,40 +65,40 @@
     border: 0;
 }
 
-.newTaskBar .btnSave:hover {
+.new_task_bar .btn_save:hover {
     background-color: '#dca305';
 }
 
 
 /* INFO CONTENT TASK */
-.contentInfoTasks {
+.content_info_tasks {
     width: 736px;
     margin: 4rem auto 1.5rem auto;
     display: flex;
     justify-content: space-between;
 }
 
-.infoTasks {
+.info_tasks {
     display: flex;
     align-items: center;
     gap: 0.5rem;
 }
 
-.infoTasks span,
+.info_tasks span,
 p {
     font-weight: bold;
     font-size: 0.875rem;
 }
 
-.infoTasks .firstSpan {
+.info_tasks .first_span {
     color: var(--blue);
 }
 
-.secondSpan {
+.second_span {
     color: var(--purple);
 }
 
-.infoTasks p {
+.info_tasks p {
     padding: 2px 8px;
     background: var(--gray-400);
     border-radius: 50px;
@@ -107,7 +107,7 @@ p {
     font-size: 0.75rem;
 }
 
-.showTasks {
+.show_tasks {
     width: 100%;
     height: auto;
 }
@@ -165,7 +165,7 @@ ul {
     gap: 4px;
 }
 
-.card .actions .btnEdit {
+.card .actions .btn_edit {
     width: 32px;
     height: 32px;
     display: flex;
@@ -176,18 +176,18 @@ ul {
     background: transparent;
 }
 
-.card .actions .btnEdit:hover {
+.card .actions .btn_edit:hover {
     color: var(--green);
     background: var(--gray-400);
 }
 
-.card .actions .btnEdit:disabled {
+.card .actions .btn_edit:disabled {
     cursor: not-allowed;
     color: #808080;
     background: var(--gray-400);
 }
 
-.card .actions .btnDelete {
+.card .actions .btn_delete {
     width: 32px;
     height: 32px;
     display: flex;
@@ -198,12 +198,12 @@ ul {
     background: transparent;
 }
 
-.card .actions .btnDelete:hover {
+.card .actions .btn_delete:hover {
     color: var(--danger);
     background: var(--gray-400);
 }
 
-.card .actions .btnDelete:disabled {
+.card .actions .btn_delete:disabled {
     cursor: not-allowed;
     color: #808080;
     background: var(--gray-400);

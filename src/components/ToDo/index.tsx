@@ -72,7 +72,7 @@ export function ToDo() {
         <main className={styled.container}>
             <div className={styled.content}>
                 <div
-                    className={styled.newTaskBar}
+                    className={styled.new_task_bar}
                 >
                     <input
                         type="text"
@@ -82,7 +82,7 @@ export function ToDo() {
                     />
                     <button
                         type='submit'
-                        className={state === false ? styled.btnAdd : styled.btnSave}
+                        className={state === false ? styled.btn_add : styled.btn_save}
                         onClick={state === false ? createNewTask : handleUpdateTaskTitle}
                     >
                         {state === false ? 'Criar' : 'Alterar'}
@@ -92,19 +92,19 @@ export function ToDo() {
             </div>
 
             {/* INFORMAÇÕES: Tasks criadas/concluídas */}
-            <div className={styled.contentInfoTasks}>
-                <div className={styled.infoTasks}>
-                    <span className={styled.firstSpan}>Tarefas criadas</span>
+            <div className={styled.content_info_tasks}>
+                <div className={styled.info_tasks}>
+                    <span className={styled.first_span}>Tarefas criadas</span>
                     <p className={styled.count}>{tasks.length}</p>
                 </div>
 
-                <div className={styled.infoTasks}>
-                    <span className={styled.secondSpan}>Concluídas</span>
+                <div className={styled.info_tasks}>
+                    <span className={styled.second_span}>Concluídas</span>
                     <p className={styled.count}>{countCompletedTasks} de {tasks.length}</p>
                 </div>
             </div>
 
-            <div className={styled.showTasks}>
+            <div className={styled.show_tasks}>
                 {tasks.length === 0
                     ? <NoTasks />
                     : <ul>
@@ -127,14 +127,14 @@ export function ToDo() {
 
                                     <div className={styled.actions}>
                                         <button
-                                            className={styled.btnEdit}
+                                            className={styled.btn_edit}
                                             onClick={() => getTaskData(index)}
                                             disabled={ state === false ? false : true }
                                         >
                                             <PencilSimpleLine size={64} />
                                         </button>
                                         <button
-                                            className={styled.btnDelete}
+                                            className={styled.btn_delete}
                                             onClick={() => handleDeleteTask(index)}
                                             disabled={ state === false ? false : true }
                                         >
