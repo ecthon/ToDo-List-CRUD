@@ -32,6 +32,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
     width: 90px;
     height: 56px;
     margin-left: 0.5rem;
@@ -41,12 +42,33 @@
     gap: 0.5rem;
     cursor: pointer;
     transition: background 0.2s;
-    border: 1 solid var(--blue);
+    border: 0;
 }
 
 .newTaskBar .btnAdd:hover {
     background: var(--blue);
 }
+
+.newTaskBar .btnSave {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 90px;
+    height: 56px;
+    margin-left: 0.5rem;
+    border-radius: 8px;
+    background-color: #f5b913;
+    color: var(--gray-100);
+    gap: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    border: 0;
+}
+
+.newTaskBar .btnSave:hover {
+    background-color: '#dca305';
+}
+
 
 /* INFO CONTENT TASK */
 .contentInfoTasks {

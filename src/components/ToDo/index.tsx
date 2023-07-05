@@ -15,7 +15,8 @@ export function ToDo() {
         }
     ])
     const [CompletedTasks, setCompleteddTasks] = useState<number>(0)
-         const [newTaskTitle, setNewTaskTitle] = useState('');
+    const [newTaskTitle, setNewTaskTitle] = useState('');
+    const [ buttonLabel, setButtonLabel ] = useState(false);
 
     function handleCreateNewTask() {
         if (!newTaskTitle) {
@@ -27,6 +28,24 @@ export function ToDo() {
             title: newTaskTitle,
             isCompleted: false
         }
+        
+        setTasks([...tasks, task]);
+        setNewTaskTitle("");
+    }
+
+    function updateTaskTitle(index: number) {
+        if (!newTaskTitle) {
+            return alert("O campo não pode estar vazio.")
+        }
+
+        
+        const task: TaskProps = {
+            id: uuidv4(),
+            title: newTaskTitle,
+            isCompleted: false
+        }
+
+        tasks[index].title = newTaskTitle
         
         setTasks([...tasks, task]);
         setNewTaskTitle("");
@@ -51,6 +70,14 @@ export function ToDo() {
         setCompleteddTasks(taskCompleted)
     }
 
+    // function updateTaskTitle(index: number) {
+    //     const task = tasks[index].title;
+    //     setButtonLabel(!buttonLabel);
+    //     setNewTaskTitle(task);
+
+    //     tasks[index].title = newTaskTitle 
+    // }
+
     function handleDeleteTask(index: number) {
         tasks.splice(index,1);
         setTasks([...tasks]);
@@ -71,9 +98,11 @@ export function ToDo() {
                     />
                     <button
                         type='submit'
-                        className={styled.btnAdd}
+                        className={buttonLabel === false ? styled.btnAdd : styled.btnSave}
                         onClick={handleCreateNewTask}
-                    > Criar <PlusCircle size={16} />
+                    >
+                        {buttonLabel === false ? 'Criar' : 'Alterar'}
+                        {buttonLabel === false ? <PlusCircle size={16} /> : <PencilSimpleLine size={16} />}
                     </button>
                 </div>
             </div>
@@ -100,8 +129,8 @@ export function ToDo() {
                                 <div className={styled.card}>
                                     <button onClick={() => handleToggleTaskCompleted(index)} >
                                         {task.isCompleted === false
-                                            ? <Circle color='#4EA8DE' size={24} /> 
-                                            : <CheckCircle color='#9747FF' size={24} weight="fill" />
+                                            ? <Circle color='#8284FA' size={24} /> 
+                                            : <CheckCircle color='#2d1e9f' size={24} weight="fill" />
                                         }
                                     </button>
 
@@ -115,7 +144,7 @@ export function ToDo() {
                                     <div className={styled.actions}>
                                         <button
                                             className={styled.btnEdit}
-                                            onClick={() => handleDeleteTask(index)}
+                                            onClick={() => updateTaskTitle(index)}
                                         >
                                             <PencilSimpleLine size={64} />
                                         </button>
