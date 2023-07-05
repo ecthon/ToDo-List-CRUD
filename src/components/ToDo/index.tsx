@@ -54,11 +54,10 @@ export function ToDo() {
         const toggleTaskCompleted = tasks[index];
         toggleTaskCompleted.isCompleted = !toggleTaskCompleted.isCompleted;
         setTasks([...tasks]);
-        updateTakskCompleted();
+        updateCountTakskCompleted();
     }
 
-    function updateTakskCompleted(){
-        console.log('tasks ', tasks)
+    const updateCountTakskCompleted = () => {
         const taskCompleted = tasks.filter(el=>el.isCompleted).length
         setCountCompletedTasks(taskCompleted)
     }
@@ -66,7 +65,7 @@ export function ToDo() {
     function handleDeleteTask(index: number) {
         tasks.splice(index,1);
         setTasks([...tasks]);
-        updateTakskCompleted();
+        updateCountTakskCompleted();
     }
 
     return (
