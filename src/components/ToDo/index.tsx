@@ -129,12 +129,14 @@ export function ToDo() {
                                         <button
                                             className={styled.btnEdit}
                                             onClick={() => getTaskData(index)}
+                                            disabled={ state === false ? false : true }
                                         >
                                             <PencilSimpleLine size={64} />
                                         </button>
                                         <button
                                             className={styled.btnDelete}
                                             onClick={() => handleDeleteTask(index)}
+                                            disabled={ state === false ? false : true }
                                         >
                                             <Trash size={64} />
                                         </button>

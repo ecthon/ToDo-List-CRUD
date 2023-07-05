@@ -175,6 +175,18 @@ ul {
     border-radius: 6px;
     background: transparent;
 }
+
+.card .actions .btnEdit:hover {
+    color: var(--green);
+    background: var(--gray-400);
+}
+
+.card .actions .btnEdit:disabled {
+    cursor: not-allowed;
+    color: #808080;
+    background: var(--gray-400);
+}
+
 .card .actions .btnDelete {
     width: 32px;
     height: 32px;
@@ -191,7 +203,8 @@ ul {
     background: var(--gray-400);
 }
 
-.card .actions .btnEdit:hover {
-    color: var(--green);
+.card .actions .btnDelete:disabled {
+    cursor: not-allowed;
+    color: #808080;
     background: var(--gray-400);
 }
