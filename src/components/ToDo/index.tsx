@@ -50,15 +50,9 @@ export function ToDo() {
         setNewTaskTitle("");
     }
 
-    function handleToggleTaskCompleted(index: number) {
+    const handleToggleTaskCompleted = (index: number) => {
         const toggleTaskCompleted = tasks[index];
         toggleTaskCompleted.isCompleted = !toggleTaskCompleted.isCompleted;
-        // const toggleTaskCompleted = {...tasks[index],isCompleted:!tasks[index].isCompleted}
-
-        // tasks.splice(index,1,toggleTaskCompleted)
-        // let arrayAtualizado:TaskProps[]=[]
-        // Object.assign(arrayAtualizado,tasks)
-        // setTasks(arrayAtualizado);
         setTasks([...tasks]);
         updateTakskCompleted();
     }
