@@ -40,7 +40,7 @@ export function ToDo() {
         setTaskIndex(index);
     }
 
-    function handleUpdateTaskTitle() {
+    const handleUpdateTaskTitle = () => {
         if (!newTaskTitle) {
             return alert("O campo não pode estar vazio.")
         }
