@@ -38,7 +38,7 @@
     margin-left: 0.5rem;
     border-radius: 8px;
     background: var(--blue-dark);
-    color: var(--gray-100);
+    color: #000;
     gap: 0.5rem;
     cursor: pointer;
     transition: background 0.2s;
@@ -46,7 +46,7 @@
 }
 
 .new_task_bar .btn_add:hover {
-    background: var(--blue);
+    background: #ffbb01;
 }
 
 .new_task_bar .btn_save {
@@ -57,8 +57,8 @@
     height: 56px;
     margin-left: 0.5rem;
     border-radius: 8px;
-    background-color: #f5b913;
-    color: var(--gray-100);
+    background-color: var(--pink);
+    color: #000;
     gap: 0.5rem;
     cursor: pointer;
     transition: background-color 0.2s;
@@ -66,7 +66,7 @@
 }
 
 .new_task_bar .btn_save:hover {
-    background-color: '#dca305';
+    background-color: #fc003f;
 }
 
 
