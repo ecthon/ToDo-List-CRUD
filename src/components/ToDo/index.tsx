@@ -5,6 +5,8 @@ import { CheckCircle, Circle, PencilSimpleLine, PlusCircle, Trash } from 'phosph
 import { NoTasks } from '../NoTasks';
 import { useState } from 'react';
 import { TaskProps } from '../../types';
+ 
+import { MagicMotion } from 'react-magic-motion'
 
 export function ToDo() {
     const [tasks, setTasks] = useState<TaskProps[]>([
@@ -69,6 +71,7 @@ export function ToDo() {
     }
 
     return (
+        <MagicMotion>
         <main className={styled.container}>
             <div className={styled.content}>
                 <div
@@ -148,5 +151,6 @@ export function ToDo() {
                     </ul>}
             </div>
         </main>
+    </MagicMotion>
     )
 }
