@@ -85,7 +85,7 @@ export function ToDo() {
                         className={state === false ? styled.btn_add : styled.btn_save}
                         onClick={state === false ? createNewTask : handleUpdateTaskTitle}
                     >
-                        {state === false ? 'Criar' : 'Alterar'}
+                        {state === false ? 'Salvar' : 'Alterar'}
                         {state === false ? <PlusCircle size={16} /> : <PencilSimpleLine size={16} />}
                     </button>
                 </div>
