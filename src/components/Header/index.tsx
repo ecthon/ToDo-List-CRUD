@@ -3,7 +3,7 @@ import styled from './styles.module.scss';
 export function Header() {
     return (
         <header>
-            <img className={styled.logo} src="../src/assets/logo.svg" />
+            <h1 className={styled.logo}>To Do</h1>
         </header>
     )
 }
