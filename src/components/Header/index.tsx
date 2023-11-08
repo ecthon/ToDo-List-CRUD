@@ -1,9 +1,10 @@
 import styled from './styles.module.scss';
+import logoImg from '../../assets/logo.svg'
 
 export function Header() {
     return (
         <header>
-            <h1 className={styled.logo}>To Do</h1>
+            <img className={styled.logo} src={logoImg}></img>
         </header>
     )
 }

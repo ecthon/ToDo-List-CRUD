@@ -116,8 +116,8 @@ export function ToDo() {
                                 <div className={styled.card}>
                                     <button onClick={() => handleToggleTaskCompleted(index)} >
                                         {task.isCompleted === false
-                                            ? <Circle color='#FFC122' size={24} /> 
-                                            : <CheckCircle color='#FFC122' size={24} weight="fill" />
+                                            ? <Circle color='#10b981' size={24} /> 
+                                            : <CheckCircle color='#10b981' size={24} weight="fill" />
                                         }
                                     </button>
 
