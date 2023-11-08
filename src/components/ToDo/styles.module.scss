@@ -211,6 +211,16 @@ ul {
 }
 
 @media screen and (max-width: 640px) {
+    .container {
+        display: flex;
+        width: 100%;
+    }
+    .content {
+        display: flex;
+        width: 100%;
+        margin: 0 auto;
+        box-sizing: border-box;
+    }
     .new_task_bar {
         display: flex;
         flex-direction: column;
@@ -222,7 +232,6 @@ ul {
         display: flex;
         width: 100%;
         margin: 0 auto;
-        background: #fc003f;
     }
 
     .new_task_bar .btn_add {
@@ -230,4 +239,37 @@ ul {
         margin-left: 0;
         margin-top: 8px;
     }
+
+    .content_info_tasks {
+        display: flex;
+        width: 100%;
+        padding: 20px;
+        margin: 1rem auto 1rem auto;
+    }
+
+    .show_tasks {
+        width: 100%;
+        height: auto;
+        padding: 0 20px;
+    }
+    
+    ul {
+        list-style: none;
+    }
+
+    .card {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        height: auto;
+        padding: 1rem;
+        border-radius: 8px;
+        border: 1px solid var(--gray-400);
+        background: var(--gray-500);
+        margin-bottom: 12px;
+        gap: 12px;
+    }
+
+    
   }
