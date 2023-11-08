@@ -38,8 +38,8 @@
     height: 56px;
     margin-left: 0.5rem;
     border-radius: 8px;
-    background: var(--blue-dark);
-    color: #000;
+    background: var(--emerald-500);
+    color: #FFF;
     gap: 0.5rem;
     cursor: pointer;
     transition: background 0.2s;
@@ -58,7 +58,7 @@
     height: 56px;
     margin-left: 0.5rem;
     border-radius: 8px;
-    background-color: var(--pink);
+    background-color: var(--amber-500);
     color: #000;
     gap: 0.5rem;
     cursor: pointer;
@@ -279,7 +279,7 @@ ul {
         height: 56px;
         margin-left: 0;
         border-radius: 8px;
-        background-color: var(--pink);
+        background-color: var(--amber-500);
         color: #FFF;
         gap: 0.5rem;
         cursor: pointer;
