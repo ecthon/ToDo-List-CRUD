@@ -1,0 +1,13 @@
+.footer {
+    width: 100%;
+    p {
+        color: var(--gray-400);
+        font-weight: 600;
+        margin-top: 32px;
+        cursor: pointer;
+        transition: color 0.3s;
+        &:hover {
+            color: gray;
+        }
+    }
+}

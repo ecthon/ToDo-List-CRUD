@@ -1,4 +1,5 @@
 import '../src/styles/globals.css';
+import { Footer } from './components/Footer';
 import { Header } from './components/Header';
 import { ToDo } from './components/ToDo';
 
@@ -7,6 +8,7 @@ function App() {
     <>
       <Header />
       <ToDo />
+      <Footer />
     </>
   )
 }
