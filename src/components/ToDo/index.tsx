@@ -3,10 +3,11 @@ import styled from './styles.module.scss';
 import { v4 as uuidv4 } from 'uuid';
 import { CheckCircle, Circle, PencilSimpleLine, PlusCircle, Trash } from 'phosphor-react';
 import { NoTasks } from '../NoTasks';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { TaskProps } from '../../types';
  
 import { MagicMotion } from 'react-magic-motion'
+import api from '../../services/api';
 
 export function ToDo() {
     const [tasks, setTasks] = useState<TaskProps[]>([
@@ -20,6 +21,15 @@ export function ToDo() {
     const [ state, setState ] = useState(false);
     const [ countCompletedTasks, setCountCompletedTasks ] = useState<number>(0)
     const [ newTaskTitle, setNewTaskTitle ] = useState('');
+
+    useEffect(() => {
+        api.get(`/`)
+        .then((response) => {
+            const dados = response.data
+            console.log("DADOSS",dados)
+        }
+        )
+    }, [])
 
     const createNewTask = () => {
         if (!newTaskTitle) {
@@ -116,8 +126,8 @@ export function ToDo() {
                                 <div className={styled.card}>
                                     <button onClick={() => handleToggleTaskCompleted(index)} >
                                         {task.isCompleted === false
-                                            ? <Circle color='#10b981' size={24} /> 
-                                            : <CheckCircle color='#10b981' size={24} weight="fill" />
+                                            ? <Circle color='#FFC122' size={24} /> 
+                                            : <CheckCircle color='#FFC122' size={24} weight="fill" />
                                         }
                                     </button>
 
