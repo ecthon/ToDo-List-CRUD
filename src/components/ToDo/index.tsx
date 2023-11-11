@@ -25,7 +25,7 @@ export function ToDo() {
     useEffect(() => {
         api.get(`/`)
         .then((response) => {
-            const dados = response.data
+            const dados = setTasks(response.data)
             console.log("DADOSS",dados)
         }
         )
@@ -126,14 +126,15 @@ export function ToDo() {
                                 <div className={styled.card}>
                                     <button onClick={() => handleToggleTaskCompleted(index)} >
                                         {task.isCompleted === false
-                                            ? <Circle color='#FFC122' size={24} /> 
-                                            : <CheckCircle color='#FFC122' size={24} weight="fill" />
+                                            ? <CheckCircle color='#FFC122' size={24} weight="fill" /> 
+                                            : <Circle color='#FFC122' size={24} />
                                         }
                                     </button>
 
                                     <p className={task.isCompleted === false
-                                            ? styled.title 
-                                            : styled.completed}
+                                            ? styled.completed 
+                                            : styled.title
+                                        }
                                         >
                                         {task.title}
                                     </p>
