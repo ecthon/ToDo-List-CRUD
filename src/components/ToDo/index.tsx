@@ -70,7 +70,7 @@ export function ToDo() {
     }
 
     const updateCountTakskCompleted = () => {
-        const taskCompleted = tasks.filter(el=>el.isCompleted).length
+        const taskCompleted = tasks.filter(el => el.isCompleted === false).length
         setCountCompletedTasks(taskCompleted)
     }
 
