@@ -11,11 +11,11 @@ import api from '../../services/api';
 
 export function ToDo() {
     const [tasks, setTasks] = useState<TaskProps[]>([
-        {
-            id: uuidv4(),
-            title: 'Exemplo',
-            isCompleted: false
-        }
+        // {
+        //     id: uuidv4(),
+        //     title: 'Exemplo',
+        //     isCompleted: false
+        // }
     ])
     const [ taskIndex, setTaskIndex ] = useState(0) 
     const [ state, setState ] = useState(false);
@@ -25,22 +25,23 @@ export function ToDo() {
     useEffect(() => {
         api.get(`/`)
         .then((response) => {
-            const dados = setTasks(response.data)
-            console.log("DADOSS",dados)
-        }
-        )
+            setTasks(response.data)
+        })
     }, [])
+    console.log("TASKS",tasks)
 
+    // POST 
     const createNewTask = () => {
         if (!newTaskTitle) {
             return alert("O campo não pode estar vazio.")
         }
 
         const task: TaskProps = {
-            id: uuidv4(),
             title: newTaskTitle,
             isCompleted: false
         }
+
+        api.post(`/newtask`, task)
         
         setTasks([...tasks, task]);
         setNewTaskTitle("");
