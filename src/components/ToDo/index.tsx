@@ -1,6 +1,6 @@
 import styled from './styles.module.scss';
 
-import { v4 as uuidv4 } from 'uuid';
+// import { v4 as uuidv4 } from 'uuid';
 import { CheckCircle, Circle, PencilSimpleLine, PlusCircle, Trash } from 'phosphor-react';
 import { NoTasks } from '../NoTasks';
 import { useEffect, useState } from 'react';
