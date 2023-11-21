@@ -17,21 +17,26 @@ export function ToDo() {
         //     isCompleted: false
         // }
     ])
-    const [ taskIndex, setTaskIndex ] = useState(0) 
+    const [ taskIndex, setTaskIndex ] = useState(-1) 
     const [ state, setState ] = useState(false);
     const [ countCompletedTasks, setCountCompletedTasks ] = useState<number>(0)
     const [ newTaskTitle, setNewTaskTitle ] = useState('');
+    const saveId = ''
 
     useEffect(() => {
+        findAll()
+    }, [])
+    console.log("TASKS",tasks)
+
+    function findAll() {
         api.get(`/`)
         .then((response) => {
             setTasks(response.data)
         })
-    }, [])
-    console.log("TASKS",tasks)
+    }
 
     // POST 
-    const createNewTask = () => {
+    const createNewTask = async () => {
         if (!newTaskTitle) {
             return alert("O campo não pode estar vazio.")
         }
@@ -41,9 +46,11 @@ export function ToDo() {
             isCompleted: false
         }
 
-        api.post(`/newtask`, task)
+        const response = await api.post<TaskProps>(`/newtask`, task)
+        console.log("RESPONSE", response.data);
+
         
-        setTasks([...tasks, task]);
+        setTasks([...tasks, response.data]);
         setNewTaskTitle("");
     }
 
@@ -53,14 +60,16 @@ export function ToDo() {
         setTaskIndex(index);
     }
 
-    const handleUpdateTaskTitle = () => {
+    const handleUpdateTaskTitle = async () => {
         if (!newTaskTitle) {
             return alert("O campo não pode estar vazio.")
         }
-
-        tasks[taskIndex].title = newTaskTitle
+        const { id } = tasks[taskIndex]
+        await api.put(`/task/${id}`, {title: newTaskTitle})
+        // tasks[taskIndex].title = newTaskTitle
         setState(!state);
         setNewTaskTitle("");
+        findAll();
     }
 
     const handleToggleTaskCompleted = (index: number) => {
@@ -75,10 +84,12 @@ export function ToDo() {
         setCountCompletedTasks(taskCompleted)
     }
 
-    const handleDeleteTask = (index: number) => {
-        tasks.splice(index,1);
-        setTasks([...tasks]);
-        updateCountTakskCompleted();
+    const handleDeleteTask = async (id: number) => {
+        await api.delete(`/task/${id}`)
+        findAll()
+        // tasks.splice(index,1);
+        // setTasks([...tasks]);
+        // updateCountTakskCompleted();
     }
 
     return (
@@ -150,7 +161,7 @@ export function ToDo() {
                                         </button>
                                         <button
                                             className={styled.btn_delete}
-                                            onClick={() => handleDeleteTask(index)}
+                                            onClick={() => handleDeleteTask(Number(task.id))}
                                             disabled={ state === false ? false : true }
                                         >
                                             <Trash size={64} />
